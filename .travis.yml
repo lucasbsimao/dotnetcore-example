@@ -6,7 +6,7 @@ install:
 - dotnet restore
 
 before_script: 
-- cd project
+- cd purchaseapp
 
 script:
 - dotnet build
