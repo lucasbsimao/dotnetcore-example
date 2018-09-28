@@ -2,11 +2,11 @@ language: csharp
 mono: none
 dotnet: 2.1
 
+before_install: 
+- cd purchaseapp
+
 install:
 - dotnet restore
-
-before_script: 
-- cd purchaseapp
 
 script:
 - dotnet build
