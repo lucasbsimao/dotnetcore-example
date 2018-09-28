@@ -5,6 +5,8 @@ dotnet: 2.1
 install:
 - dotnet restore
 
+before_script: 
+- cd project
+
 script:
-- cd purchaseapp
 - dotnet build
