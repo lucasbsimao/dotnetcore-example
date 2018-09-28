@@ -1,0 +1,7 @@
+@model IEnumerable<purchaseapp.Models.Produto>
+
+<ul>
+@foreach(var produto in @Model){
+    <li>@produto.Nome</li>
+}
+</ul>
