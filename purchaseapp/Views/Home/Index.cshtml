@@ -1,7 +1,14 @@
-@model IEnumerable<purchaseapp.Models.Produto>
+@model IEnumerable<Produto>
 
-<ul>
-@foreach(var produto in @Model){
-    <li>@produto.Nome</li>
-}
-</ul>
+<form asp-controller="Home" asp-action="Submit" method="post">
+    <ul>
+    @{int i = 0;}
+    @foreach(var produto in @Model){
+        <input id="radio-@i" type="radio" value="@produto" name="optradio"/>
+        <label for="radio-@i">@produto.Nome - R$@produto.Preco</label>
+        i++;
+        <br />
+    }
+    </ul>
+    <input value="Comprar" type="submit">
+</form>

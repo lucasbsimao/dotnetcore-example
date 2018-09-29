@@ -15,5 +15,11 @@ namespace purchaseapp.Controllers
             return View(produtos);
         }
 
+        [HttpPost]
+        public IActionResult Submit(Produto produto){
+
+            return View();
+        }
+
     }
 }
