@@ -15,6 +15,7 @@ namespace purchaseapp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLogging();
             services.AddMvc();
         }
 
@@ -26,7 +27,10 @@ namespace purchaseapp
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("default", "{controller=Home}/{action=Produtos}/{id?}");
+            });
         }
     }
 }

@@ -1,0 +1,14 @@
+@model ProdutosViewModel
+
+<form asp-controller="Home" asp-action="Produtos" method="post">
+    <div>@Html.ValidationMessageFor(model => model.ProdutoSelecionado)</div>
+    <ul>
+    @foreach(var produto in @Model.ListaProdutos){
+        @Html.RadioButtonFor(model => model.ProdutoSelecionado, produto.Id)
+        @Html.Label("prod-" + produto.Id, produto.Nome + " - R$ ")
+        @Html.DisplayFor(model => model.ListaProdutos[produto.Id].Preco)
+        <br />
+    }
+    </ul>
+    <input value="Comprar" type="submit">
+</form>

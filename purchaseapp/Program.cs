@@ -14,7 +14,14 @@ namespace purchaseapp
     {
         public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args).Build().Run();
+            CreateWebHostBuilder(args)
+                .ConfigureLogging((hostContext, logging) => 
+                {
+                    logging.AddConfiguration(hostContext.Configuration.GetSection("Logging"));
+                    logging.AddConsole();
+                })
+                .Build()
+                .Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

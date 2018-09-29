@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace purchaseapp.Models{
     public class Produto{
 
@@ -5,6 +7,7 @@ namespace purchaseapp.Models{
 
         public string Nome { get; set; }
 
+        [DisplayFormat(DataFormatString="{0:##.00#}")]
         public float Preco { get; set; }
     }
 }
