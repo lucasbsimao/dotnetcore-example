@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 namespace purchaseapp.Models{
     public class DadosCompra{
 
-        public Guid MerchantId { get; } = new Guid("");
+        public Guid MerchantId { get; } = new Guid("ac780022-dba5-488b-819f-64c042264214");
 
-        public string MerchantKey { get; } = "";
+        public string MerchantKey { get; } = "UDNUPPOTMBPDQJDDSNWNKQULVBHBXOTGAOHEUBTF";
 
         [Required(ErrorMessage="Nome não preenchido!")]
         [StringLength(50, ErrorMessage = "Nome deve ter no máximo 50 caracteres!")]
@@ -23,8 +23,7 @@ namespace purchaseapp.Models{
         public int QtdParcelas { get; set; }
 
         [Required(ErrorMessage="Número do cartão não preenchido!")]
-        [DisplayFormat(DataFormatString="{####-####-####-####}", ApplyFormatInEditMode = true)]
-        public string NumCartao { get; set; }
+        public int NumCartao { get; set; }
 
         [StringLength(25, ErrorMessage = "Nome no cartão deve ter no máximo 25 caracteres!")]
         public string NomeCartao { get; set; }

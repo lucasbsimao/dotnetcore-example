@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using purchaseapp.Models;
 
 namespace purchaseapp.Controllers
@@ -25,7 +26,6 @@ namespace purchaseapp.Controllers
             ProdutosViewModel produtosModel = new ProdutosViewModel{
                 ListaProdutos = _listaProdutos
             };
-            
 
             return View(produtosModel);
         }
@@ -34,14 +34,12 @@ namespace purchaseapp.Controllers
         public IActionResult Produtos(ProdutosViewModel produtosModel){
               
             int idProd = int.Parse(produtosModel.ProdutoSelecionado);
+
             Produto produto = _listaProdutos[idProd];
+            
+            TempData["produtoSelecionado"] = JsonConvert.SerializeObject(produto);
 
-            return View("Comprar");
-        }
-
-        [HttpGet]
-        public IActionResult Comprar(){
-            return View();
+            return RedirectToAction("Comprar", "Compra");
         }
 
     }

@@ -16,6 +16,8 @@ namespace purchaseapp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddLogging();
+            services.AddMemoryCache();
+            services.AddSession();
             services.AddMvc();
         }
 
@@ -26,6 +28,9 @@ namespace purchaseapp
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseStaticFiles();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

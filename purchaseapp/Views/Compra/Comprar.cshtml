@@ -1,0 +1,32 @@
+@model ComprarViewModel
+
+<div style="border: 3px solid rgb(67, 87, 31); text-align: center;">
+    @Html.Label("prod-" + @Model.ProdutoSelecionado.Id, @Model.ProdutoSelecionado.Nome + " - R$ ")
+    @Html.DisplayFor(model => model.ProdutoSelecionado.Preco)
+</div>
+
+<form asp-controller="Compra" asp-action="Comprar" method="post">
+    @Html.Label("label-nome-compl", "Nome completo: ")
+    @Html.TextBoxFor(model => model.DadosComprador.NomeCompleto )
+    <br />
+    @Html.Label("label-valor-compra", "Número de parcelas: ")
+    @Html.DropDownListFor( model => model.DadosComprador.QtdParcelas, Model.ListaQtdParcelas, "Qtd. de parcelas")
+    <br />
+    @Html.Label("label-num-cartao", "Número cartão: ")
+    @Html.TextBoxFor(model => model.DadosComprador.NumCartao)
+    <br />
+    @Html.Label("label-nom-cartao", "Nome do cartão: ")
+    @Html.TextBoxFor(model => model.DadosComprador.NomeCartao)
+    <br />
+    @Html.Label("label-dat-cartao", "Data validade do cartão: ")
+    @Html.TextBoxFor(model => model.DadosComprador.DataValidade)
+    <br />
+    @Html.Label("label-cod-cartao", "Cod. segurança do cartão: ")
+    @Html.TextBoxFor(model => model.DadosComprador.CodSeguranca)
+    <br />
+    @Html.Label("label-band-cartao", "Bandeira do cartão: ")
+    @Html.DropDownListFor( model => model.DadosComprador.BandeiraCartao, Model.ListaBandeiras, "Selecione a bandeira")
+    <br />
+    <input value="Comprar" type="submit">
+</form>
+
