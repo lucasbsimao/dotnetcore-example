@@ -58,11 +58,11 @@ namespace purchaseapp.Controllers{
         }
 
         [HttpPost]
-        public async Task<IActionResult> ComprarAsync(ComprarViewModel comprarViewModel){
-
+        public IActionResult Comprar(ComprarViewModel comprarViewModel)
+        {
+            comprarViewModel.DadosComprador.MerchantOrderId = "2018100100";
             var clientPost = new ClientRequest("https://apisandbox.braspag.com.br");
-            var taskCompra = clientPost.RealizarCompraAsync(comprarViewModel.DadosComprador);
-            var respostaCompra = await taskCompra;
+            var respostaCompra = clientPost.RealizarCompra(comprarViewModel.DadosComprador);
 
             _logger.LogWarning(respostaCompra);
             return View();

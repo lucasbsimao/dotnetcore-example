@@ -4,30 +4,40 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using purchaseapp.Request.Models;
 using Newtonsoft.Json;
+using System.Text;
+using RestSharp;
 
 namespace purchaseapp.Util{
     public class ClientRequest{
 
-        private HttpClient _client;
+        private RestClient _client;
+        private string _baseUrl;
 
-        public ClientRequest(String baseUrl){
-            _client = new HttpClient();
-            _client.BaseAddress = new Uri(baseUrl);
-            _client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-            _client.DefaultRequestHeaders.Add("MerchantId","ac780022-dba5-488b-819f-64c042264214");
-            _client.DefaultRequestHeaders.Add("MerchantKey","UDNUPPOTMBPDQJDDSNWNKQULVBHBXOTGAOHEUBTF");
+        public ClientRequest(string baseUrl){
+            this._client = new RestClient();
+            this._baseUrl = baseUrl;
         }
 
-        public async Task<String> RealizarCompraAsync(Transaction dadosComprador){
-            HttpResponseMessage response = await _client.PostAsJsonAsync<Transaction>("v2/sales", dadosComprador);
-            
-            
-            JsonConvert.SerializeObject(dadosComprador).ToString();
+        public string RealizarCompra(Transaction dadosComprador)
+        {
+            _client.BaseUrl = new Uri(this._baseUrl);
+            var request = new RestRequest("/v2/sales", Method.POST);
 
-            // response.EnsureSuccessStatusCode();
+            request.AddParameter("MerchantKey", "UDNUPPOTMBPDQJDDSNWNKQULVBHBXOTGAOHEUBTF", ParameterType.HttpHeader);
+            request.AddParameter("MerchantId", "ac780022-dba5-488b-819f-64c042264214", ParameterType.HttpHeader);
+            request.AddParameter("RequestId", Guid.NewGuid(), ParameterType.HttpHeader);
 
-            return JsonConvert.SerializeObject(dadosComprador).ToString();
+            request.AddHeader("Accept", "application/json");
+            request.AddHeader("Content-Type", "application/json");
+            request.RequestFormat = DataFormat.Json;
+
+            request.AddParameter("application/json",
+                JsonConvert.SerializeObject(dadosComprador, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }),
+                ParameterType.RequestBody);
+
+            var response = _client.Execute(request);
+
+            return JsonConvert.DeserializeObject(response.Content).ToString();
         }
 
     }

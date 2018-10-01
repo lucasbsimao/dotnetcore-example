@@ -5,7 +5,7 @@
     @Html.DisplayFor(model => model.ProdutoSelecionado.Preco)
 </div>
 
-<form asp-controller="Compra" asp-action="ComprarAsync" method="post">
+<form asp-controller="Compra" asp-action="Comprar" method="post">
     @Html.Label("label-nome-compl", "Nome completo: ")
     @Html.TextBoxFor(model => model.DadosComprador.Customer.Name )
     <br />
