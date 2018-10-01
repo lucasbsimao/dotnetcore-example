@@ -15,8 +15,8 @@ namespace purchaseapp.Controllers
         public HomeController(ILogger<HomeController> logger) {
             _logger = logger;
             _listaProdutos = new List<Produto>{
-                new Produto { Id = 0, Nome = "Produto 1", Preco = 21.20F},
-                new Produto { Id = 1, Nome = "Produto 2", Preco = 41.99F}
+                new Produto { Id = 0, Nome = "PS4", Preco = 2100.20F},
+                new Produto { Id = 1, Nome = "XBox One", Preco = 2500.00F}
             };
         }
 

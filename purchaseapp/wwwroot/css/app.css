@@ -1,0 +1,13 @@
+.container{
+    width:50%; 
+    margin: 0 auto;
+    background-color: #419BE1;
+    height: 100%;
+    box-shadow: 0 10px 18px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.title{
+    color: rgb(238, 238, 238);
+    padding: 10px;
+    text-align:center;
+}

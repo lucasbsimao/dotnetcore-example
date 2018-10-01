@@ -1,14 +1,22 @@
 @model ProdutosViewModel
 
-<form asp-controller="Home" asp-action="Produtos" method="post">
-    <div>@Html.ValidationMessageFor(model => model.ProdutoSelecionado)</div>
-    <ul>
-    @foreach(var produto in @Model.ListaProdutos){
-        @Html.RadioButtonFor(model => model.ProdutoSelecionado, produto.Id)
-        @Html.Label("prod-" + produto.Id, produto.Nome + " - R$ ")
-        @Html.DisplayFor(model => model.ListaProdutos[produto.Id].Preco)
-        <br />
-    }
-    </ul>
-    <input value="Comprar" type="submit">
-</form>
+<div style="text-align: center;">
+    <form asp-controller="Home" asp-action="Produtos" method="post" >
+        <div>@Html.ValidationMessageFor(model => model.ProdutoSelecionado)</div>
+        @foreach(var produto in @Model.ListaProdutos){
+            <div class="polaroid">
+                <img src="~/img/produto-@(produto.Id+1).jpg" style="width:100%; height: 100%">
+                <div class="sub-img-container">
+                    <p>
+                        @Html.RadioButtonFor(model => model.ProdutoSelecionado, produto.Id)
+                        @Html.Label("prod-" + produto.Id, produto.Nome + " - R$ ")
+                        @Html.DisplayFor(model => model.ListaProdutos[produto.Id].Preco)
+                    </p>
+                </div>
+            </div>
+            
+            <br />
+        }
+        <input value="Comprar" class="button" type="submit">
+    </form>
+</div>

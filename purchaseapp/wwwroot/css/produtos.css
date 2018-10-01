@@ -1,0 +1,36 @@
+.container-compra .label-form{
+    width: 150px;
+}
+
+.container-compra .input-form{
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+div.polaroid {
+    margin-bottom: 80px;
+    display: inline-block;
+    width: 200px;
+    box-shadow: 0 16px 18px 0 rgba(0, 0, 0, 0.329), 0 16px 20px 0 rgba(0, 0, 0, 0.33);
+    text-align: center;
+    height: 150px;
+}
+
+div.sub-img-container {
+    background-color: rgb(103, 124, 133);
+    padding: 2px;
+}
+
+.button {
+    background-color: #555555;; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-weight: bold;
+}

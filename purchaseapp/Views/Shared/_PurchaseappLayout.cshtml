@@ -1,12 +1,16 @@
 <html>
     <head>
         <title>@ViewData["Title"] - Purchaseapp</title>
+        <link href="~/css/compra.css" rel="stylesheet" type="text/css" />
+        <link href="~/css/produtos.css" rel="stylesheet" type="text/css" />
+        <link href="~/css/app.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <div style="text-align:center;">
-            <h1>PurchaseApp</h1>
+        <div class="container">
+        <div class="title">
+            <h1>Loja Online</h1>
         </div>
-        <div style="width:50%; margin: 0 auto;">
+        
         @RenderBody()
         </div>
     </body>
