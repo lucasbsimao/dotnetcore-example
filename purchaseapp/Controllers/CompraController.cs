@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using purchaseapp.Models;
 using purchaseapp.Request.Models;
 using purchaseapp.Util;
@@ -14,8 +15,11 @@ namespace purchaseapp.Controllers{
 
         private readonly ILogger<CompraController> _logger;
 
+        private ClientRequest _clientPost;
+
         public CompraController(ILogger<CompraController> logger) {
             _logger = logger;
+            _clientPost = new ClientRequest("https://apisandbox.braspag.com.br");
         }
 
         [HttpGet]
@@ -60,16 +64,19 @@ namespace purchaseapp.Controllers{
         [HttpPost]
         public IActionResult Comprar(ComprarViewModel comprarViewModel)
         {
-            comprarViewModel.DadosComprador.MerchantOrderId = "2018100100";
-            var clientPost = new ClientRequest("https://apisandbox.braspag.com.br");
-            var respostaCompra = clientPost.RealizarCompra(comprarViewModel.DadosComprador);
+            comprarViewModel.DadosComprador.MerchantOrderId = "000000000";
+            
+            var respostaCompra = _clientPost.RealizarAutorizacao(comprarViewModel.DadosComprador);
 
+            var obj = JObject.Parse(respostaCompra);
             _logger.LogWarning(respostaCompra);
-            return Autorizar();
+            return Autorizar((string)obj["Payment"]["PaymentId"]);
         }
 
         [HttpGet]
-        public IActionResult Autorizar(){
+        public IActionResult Autorizar(string purchaseId){
+            _clientPost.RealizarCompra(purchaseId);
+
             return View();
         }
 

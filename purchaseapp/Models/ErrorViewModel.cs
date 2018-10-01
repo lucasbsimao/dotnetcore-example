@@ -1,6 +1,6 @@
 using System;
 
-namespace Identity.Models
+namespace purchaseapp.Models
 {
     public class ErrorViewModel
     {
