@@ -65,6 +65,11 @@ namespace purchaseapp.Controllers{
             var respostaCompra = clientPost.RealizarCompra(comprarViewModel.DadosComprador);
 
             _logger.LogWarning(respostaCompra);
+            return Autorizar();
+        }
+
+        [HttpGet]
+        public IActionResult Autorizar(){
             return View();
         }
 

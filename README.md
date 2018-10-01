@@ -7,3 +7,4 @@ Projeto piloto para criação de market place com operação de compra por cart�
 * Utilização de Configuration para carregar variáveis ambiente (MerchantId, MerchantKey, etc.)
 * Validação de campos do formulário
 * Criação de um Handler para erros da página mais adequado para produção
+* Testes unitários faltantes

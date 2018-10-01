@@ -36,6 +36,11 @@ namespace purchaseapp
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
+            }
 
             app.UseStaticFiles();
             app.UseSession();
