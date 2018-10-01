@@ -5,27 +5,27 @@
     @Html.DisplayFor(model => model.ProdutoSelecionado.Preco)
 </div>
 
-<form asp-controller="Compra" asp-action="Comprar" method="post">
+<form asp-controller="Compra" asp-action="ComprarAsync" method="post">
     @Html.Label("label-nome-compl", "Nome completo: ")
-    @Html.TextBoxFor(model => model.DadosComprador.NomeCompleto )
+    @Html.TextBoxFor(model => model.DadosComprador.Customer.Name )
     <br />
     @Html.Label("label-valor-compra", "Número de parcelas: ")
-    @Html.DropDownListFor( model => model.DadosComprador.QtdParcelas, Model.ListaQtdParcelas, "Qtd. de parcelas")
+    @Html.DropDownListFor( model => model.DadosComprador.Payment.Installments, Model.ListaQtdParcelas, "Qtd. de parcelas")
     <br />
     @Html.Label("label-num-cartao", "Número cartão: ")
-    @Html.TextBoxFor(model => model.DadosComprador.NumCartao)
+    @Html.TextBoxFor(model => model.DadosComprador.Payment.CreditCard.CardNumber)
     <br />
     @Html.Label("label-nom-cartao", "Nome do cartão: ")
-    @Html.TextBoxFor(model => model.DadosComprador.NomeCartao)
+    @Html.TextBoxFor(model => model.DadosComprador.Payment.CreditCard.Holder)
     <br />
     @Html.Label("label-dat-cartao", "Data validade do cartão: ")
-    @Html.TextBoxFor(model => model.DadosComprador.DataValidade)
+    @Html.TextBoxFor(model => model.DadosComprador.Payment.CreditCard.ExpirationDate)
     <br />
     @Html.Label("label-cod-cartao", "Cod. segurança do cartão: ")
-    @Html.TextBoxFor(model => model.DadosComprador.CodSeguranca)
+    @Html.TextBoxFor(model => model.DadosComprador.Payment.CreditCard.SecurityCode)
     <br />
     @Html.Label("label-band-cartao", "Bandeira do cartão: ")
-    @Html.DropDownListFor( model => model.DadosComprador.BandeiraCartao, Model.ListaBandeiras, "Selecione a bandeira")
+    @Html.DropDownListFor( model => model.DadosComprador.Payment.CreditCard.Brand, Model.ListaBandeiras, "Selecione a bandeira")
     <br />
     <input value="Comprar" type="submit">
 </form>

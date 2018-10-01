@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using purchaseapp.Models;
+using purchaseapp.Request.Models;
+using purchaseapp.Util;
 
 namespace purchaseapp.Controllers{
     public class CompraController : Controller{
@@ -24,7 +27,7 @@ namespace purchaseapp.Controllers{
                 var produto = JsonConvert.DeserializeObject<Produto>(TempData["produtoSelecionado"].ToString());
             
                 comprarViewModel.ProdutoSelecionado = produto;
-                comprarViewModel.DadosComprador = new DadosCompra();
+                comprarViewModel.DadosComprador = new Transaction();
 
                 comprarViewModel.ListaQtdParcelas = this.PopularListaParcelas();
                 comprarViewModel.ListaBandeiras = this.PopularListaBandeiras();
@@ -55,8 +58,13 @@ namespace purchaseapp.Controllers{
         }
 
         [HttpPost]
-        public IActionResult Comprar(ComprarViewModel comprarViewModel){
-            _logger.LogWarning("Arue aruo: "+ comprarViewModel.DadosComprador.NomeCompleto );
+        public async Task<IActionResult> ComprarAsync(ComprarViewModel comprarViewModel){
+
+            var clientPost = new ClientRequest("https://apisandbox.braspag.com.br");
+            var taskCompra = clientPost.RealizarCompraAsync(comprarViewModel.DadosComprador);
+            var respostaCompra = await taskCompra;
+
+            _logger.LogWarning(respostaCompra);
             return View();
         }
 
