@@ -77,7 +77,14 @@ namespace purchaseapp.Controllers{
         public IActionResult Autorizar(string purchaseId){
             _clientPost.RealizarCompra(purchaseId);
 
-            return View();
+            return View(purchaseId);
+        }
+
+        [HttpPost]
+        public IActionResult Cancelar(string purchaseId){
+            _clientPost.RealizarCancelamento(purchaseId);
+
+            return View(purchaseId);
         }
 
     }

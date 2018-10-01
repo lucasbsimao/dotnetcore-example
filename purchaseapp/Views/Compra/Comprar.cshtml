@@ -4,6 +4,7 @@
     @Html.Label("prod-" + @Model.ProdutoSelecionado.Id, @Model.ProdutoSelecionado.Nome + " - R$ ")
     @Html.DisplayFor(model => model.ProdutoSelecionado.Preco)
 </div>
+<br />
 
 <form asp-controller="Compra" asp-action="Comprar" method="post">
     @Html.Label("label-nome-compl", "Nome completo: ")

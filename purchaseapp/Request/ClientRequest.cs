@@ -38,6 +38,14 @@ namespace purchaseapp.Util{
             return JsonConvert.DeserializeObject(response.Content).ToString();
         }
 
+        public string RealizarCancelamento(string purchaseId)
+        {
+            _client.BaseUrl = new Uri(this._baseUrl);
+            var request = new RestRequest("/v2/sales/" + purchaseId + "/void", Method.PUT);
+            var response = this.CriarEscopoTransacao(request, (object)null);
+            return JsonConvert.DeserializeObject(response.Content).ToString();
+        }
+
         private IRestResponse CriarEscopoTransacao<T>(RestRequest request, T payload)
         {
             request.AddHeader("Accept", "application/json");
