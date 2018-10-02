@@ -2,7 +2,7 @@
 
 # E-Commerce Braspag
 
-Projeto piloto para demonstração de consumo de API da [Braspag] com operação de compra por cartão de crédito. 
+Projeto piloto para demonstração de consumo de API da Braspag com operação de compra por cartão de crédito. 
 
 ## A fazer:
 
