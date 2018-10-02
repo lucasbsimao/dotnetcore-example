@@ -57,7 +57,6 @@ namespace purchaseapp.Util{
             request.AddParameter("RequestId", Guid.NewGuid(), ParameterType.HttpHeader);
 
             if(!EqualityComparer<T>.Default.Equals(payload, default(T))){
-                Console.WriteLine("Treta braba");
                 request.AddParameter("application/json",
                     JsonConvert.SerializeObject(payload, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }),
                     ParameterType.RequestBody);

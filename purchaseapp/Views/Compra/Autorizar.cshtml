@@ -1,7 +1,20 @@
 @model string
 
-<div style="text-align: center;">
-    Seu número de pedido é : @Model .
-    <br />
-    Caso queira cancelar seu pedido, @Html.ActionLink("clique aqui", "Cancelar", "Compra").
+<div class = "formulario">
+    <div class="autorizar">
+        <br />
+        <br />
+        <form asp-controller="Cartao" asp-action="Cancelar" method="post">
+            Seu número de pedido é :.
+            <br />
+            <input disabled="disabled" value="@(Model)" type="text">
+            <br />
+            Caso queira cancelar clique no botão abaixo: 
+            <br />
+            <input value="Cancelar pedido" class="button" type="submit">
+        </form>
+    </div>
 </div>
+<br />
+<br />
+

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -37,7 +38,7 @@ namespace purchaseapp.Controllers
 
             Produto produto = _listaProdutos[idProd];
             
-            TempData["produtoSelecionado"] = JsonConvert.SerializeObject(produto);
+            HttpContext.Session.SetString("produtoSelecionado", JsonConvert.SerializeObject(produto));
 
             return RedirectToAction("Cliente", "Cliente");
         }

@@ -2,11 +2,11 @@
 
 <div style="text-align: center;">
 <div class="polaroid">
-    <img src="~/img/produto-@(Model.DadosPedido.ProdutoSelecionado.Id+1).jpg" style="width:100%; height: 100%">
+    <img src="~/img/produto-@(Model.ProdutoSelecionado.Id+1).jpg" style="width:100%; height: 100%">
     <div class="sub-img-container">
         <p>
-            @Html.Label("prod-" + @Model.DadosPedido.ProdutoSelecionado.Id, @Model.DadosPedido.ProdutoSelecionado.Nome + " - R$ ")
-            @Html.DisplayFor(model => model.DadosPedido.ProdutoSelecionado.Preco)
+            @Html.Label("prod-" + @Model.ProdutoSelecionado.Id, @Model.ProdutoSelecionado.Nome + " - R$ ")
+            @Html.DisplayFor(model => model.ProdutoSelecionado.Preco)
         </p>
     </div>
 </div>
@@ -16,19 +16,19 @@
 <div class = "formulario">
     <form asp-controller="Cliente" asp-action="Cliente" method="post">
         @Html.Label("label-nome-compl", "Nome completo: ")
-        @Html.TextBoxFor(model => model.DadosPedido.DadosComprador.Customer.Name )
+        @Html.TextBoxFor(model => model.Customer.Name )
         <br />
         @Html.Label("label-identidade", "Tipo de identidade: ")
-        @Html.DropDownListFor( model => model.DadosPedido.DadosComprador.Customer.IdentityType , Model.ListaIdentidades)
+        @Html.DropDownListFor( model => model.Customer.IdentityType , Model.ListaIdentidades)
         <br />
         @Html.Label("label-num-cartao", "Identidade: ")
-        @Html.TextBoxFor(model => model.DadosPedido.DadosComprador.Customer.Identity)
+        @Html.TextBoxFor(model => model.Customer.Identity)
         <br />
         @Html.Label("label-nom-cartao", "Email: ")
-        @Html.TextBoxFor(model => model.DadosPedido.DadosComprador.Customer.Email)
+        @Html.TextBoxFor(model => model.Customer.Email)
         <br />
-        @Html.Label("label-dat-cartao", "Data de nascimento: ")
-        @Html.TextBoxFor(model => model.DadosPedido.DadosComprador.Customer.Birthdate)
+        @Html.Label("label-dat-nasc", "Data de nascimento: ")
+        @Html.TextBoxFor(model => model.Customer.Birthdate, htmlAttributes: new { placeholder = "9999-99-99"})
         <br />
         <input value="Preencher Endereço" class="button" type="submit">
     </form>
@@ -37,4 +37,3 @@
 <br />
 <br />
 </div>
-

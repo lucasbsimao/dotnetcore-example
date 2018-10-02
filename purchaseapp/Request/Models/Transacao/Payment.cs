@@ -23,7 +23,7 @@ namespace purchaseapp.Request.Models.Transacao{
             this.CreditCard = new CreditCard();
             this.Provider = "Simulado";
             this.Type = "CreditCard";
-            this.Capture = true;
+            this.Capture = false;
         }
 
     }

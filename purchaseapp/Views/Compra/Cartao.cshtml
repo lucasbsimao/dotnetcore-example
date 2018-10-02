@@ -1,0 +1,42 @@
+@model CartaoViewModel
+
+<div style="text-align: center;">
+<div class="polaroid">
+    <img src="~/img/produto-@(Model.ProdutoSelecionado.Id+1).jpg" style="width:100%; height: 100%">
+    <div class="sub-img-container">
+        <p>
+            @Html.Label("prod-" + @Model.ProdutoSelecionado.Id, @Model.ProdutoSelecionado.Nome + " - R$ ")
+            @Html.DisplayFor(model => model.ProdutoSelecionado.Preco)
+        </p>
+    </div>
+</div>
+<br />
+<br />
+<div style="text-align: center; width: 100%;">
+<div class = "formulario">
+    <form asp-controller="Cartao" asp-action="Cartao" method="post">
+        @Html.Label("label-valor-compra", "Número de parcelas: ")
+        @Html.DropDownListFor( model => model.Payment.Installments, Model.ListaQtdParcelas)
+        <br />
+        @Html.Label("label-num-cartao", "Número cartão: ")
+        @Html.TextBoxFor(model => model.Payment.CreditCard.CardNumber)
+        <br />
+        @Html.Label("label-nom-cartao", "Nome do cartão: ")
+        @Html.TextBoxFor(model => model.Payment.CreditCard.Holder)
+        <br />
+        @Html.Label("label-dat-cartao", "Data validade do cartão: ")
+        @Html.TextBoxFor(model => model.Payment.CreditCard.ExpirationDate, htmlAttributes: new { placeholder = "99/9999"})
+        <br />
+        @Html.Label("label-cod-cartao", "Cod. segurança do cartão: ")
+        @Html.TextBoxFor(model => model.Payment.CreditCard.SecurityCode, htmlAttributes: new { placeholder = "999"})
+        <br />
+        @Html.Label("label-band-cartao", "Bandeira do cartão: ")
+        @Html.DropDownListFor( model => model.Payment.CreditCard.Brand, Model.ListaBandeiras)
+        <br />
+        <input value="Comprar" class="button" type="submit">
+    </form>
+</div>
+</div>
+<br />
+<br />
+</div>

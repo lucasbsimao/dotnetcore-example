@@ -2,11 +2,11 @@
 
 <div style="text-align: center;">
 <div class="polaroid">
-    <img src="~/img/produto-@(Model.DadosPedido.ProdutoSelecionado.Id+1).jpg" style="width:100%; height: 100%">
+    <img src="~/img/produto-@(Model.ProdutoSelecionado.Id+1).jpg" style="width:100%; height: 100%">
     <div class="sub-img-container">
         <p>
-            @Html.Label("prod-" + @Model.DadosPedido.ProdutoSelecionado.Id, @Model.DadosPedido.ProdutoSelecionado.Nome + " - R$ ")
-            @Html.DisplayFor(model => model.DadosPedido.ProdutoSelecionado.Preco)
+            @Html.Label("prod-" + @Model.ProdutoSelecionado.Id, @Model.ProdutoSelecionado.Nome + " - R$ ")
+            @Html.DisplayFor(model => model.ProdutoSelecionado.Preco)
         </p>
     </div>
 </div>
@@ -16,22 +16,22 @@
 <div class = "formulario">
     <form asp-controller="Endereco" asp-action="Endereco" method="post">
         @Html.Label("label-rua-compl", "Rua: *")
-        @Html.TextBoxFor(model => model.DadosPedido.DadosComprador.Customer.Address.Street )
+        @Html.TextBoxFor(model => model.Address.Street )
         <br />
         @Html.Label("label-num-rua", "Número: *")
-        @Html.TextBoxFor(model => model.DadosPedido.DadosComprador.Customer.Address.Number )
+        @Html.TextBoxFor(model => model.Address.Number )
         <br />
         @Html.Label("label-cep", "CEP: ")
-        @Html.TextBoxFor(model => model.DadosPedido.DadosComprador.Customer.Address.ZipCode)
+        @Html.TextBoxFor(model => model.Address.ZipCode, htmlAttributes: new { placeholder = "99999999"})
         <br />
         @Html.Label("label-cidade", "Cidade: ")
-        @Html.TextBoxFor(model => model.DadosPedido.DadosComprador.Customer.Address.City)
+        @Html.TextBoxFor(model => model.Address.City)
         <br />
         @Html.Label("label-estado", "Estado: ")
-        @Html.TextBoxFor(model => model.DadosPedido.DadosComprador.Customer.Address.State)
+        @Html.DropDownListFor( model => model.Address.State , Model.ListaUf)
         <br />
         @Html.Label("label-pais", "Pais: ")
-        @Html.DropDownListFor( model => model.DadosPedido.DadosComprador.Customer.Address.Country , Model.ListaNacoes)
+        @Html.DropDownListFor( model => model.Address.Country , Model.ListaNacoes)
         <br />
         <input value="Preencher Cartão" class="button" type="submit">
     </form>
