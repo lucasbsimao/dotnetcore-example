@@ -10,3 +10,4 @@ Projeto piloto para demonstração de consumo de API da Braspag com operação d
 * Validação de campos do formulário
 * Criação de um Handler para erros da página mais adequado para produção
 * Testes unitários faltantes
+* Operação de consulta da compra efetuada
