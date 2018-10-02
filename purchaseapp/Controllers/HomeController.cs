@@ -39,7 +39,7 @@ namespace purchaseapp.Controllers
             
             TempData["produtoSelecionado"] = JsonConvert.SerializeObject(produto);
 
-            return RedirectToAction("Comprar", "Compra");
+            return RedirectToAction("Cliente", "Cliente");
         }
 
     }

@@ -1,0 +1,40 @@
+@model ClienteViewModel
+
+<div style="text-align: center;">
+<div class="polaroid">
+    <img src="~/img/produto-@(Model.DadosPedido.ProdutoSelecionado.Id+1).jpg" style="width:100%; height: 100%">
+    <div class="sub-img-container">
+        <p>
+            @Html.Label("prod-" + @Model.DadosPedido.ProdutoSelecionado.Id, @Model.DadosPedido.ProdutoSelecionado.Nome + " - R$ ")
+            @Html.DisplayFor(model => model.DadosPedido.ProdutoSelecionado.Preco)
+        </p>
+    </div>
+</div>
+<br />
+<br />
+<div style="text-align: center; width: 100%;">
+<div class = "formulario">
+    <form asp-controller="Cliente" asp-action="Cliente" method="post">
+        @Html.Label("label-nome-compl", "Nome completo: ")
+        @Html.TextBoxFor(model => model.DadosPedido.DadosComprador.Customer.Name )
+        <br />
+        @Html.Label("label-identidade", "Tipo de identidade: ")
+        @Html.DropDownListFor( model => model.DadosPedido.DadosComprador.Customer.IdentityType , Model.ListaIdentidades)
+        <br />
+        @Html.Label("label-num-cartao", "Identidade: ")
+        @Html.TextBoxFor(model => model.DadosPedido.DadosComprador.Customer.Identity)
+        <br />
+        @Html.Label("label-nom-cartao", "Email: ")
+        @Html.TextBoxFor(model => model.DadosPedido.DadosComprador.Customer.Email)
+        <br />
+        @Html.Label("label-dat-cartao", "Data de nascimento: ")
+        @Html.TextBoxFor(model => model.DadosPedido.DadosComprador.Customer.Birthdate)
+        <br />
+        <input value="Preencher Endereço" class="button" type="submit">
+    </form>
+</div>
+</div>
+<br />
+<br />
+</div>
+

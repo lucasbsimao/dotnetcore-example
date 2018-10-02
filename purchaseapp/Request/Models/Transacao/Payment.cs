@@ -8,7 +8,9 @@ namespace purchaseapp.Request.Models.Transacao{
 
         public string Type { get; set; }
 
-        public float Amount { get; set; }
+        public int Amount { get; set; }
+
+        public string Country { get; set; }
 
         public bool Capture { get; set; }
 
