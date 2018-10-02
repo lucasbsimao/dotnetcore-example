@@ -1,6 +1,8 @@
 [![Build Status](https://travis-ci.org/lucasbsimao/purchaseapp.svg?branch=master)](https://travis-ci.org/lucasbsimao/purchaseapp)
 
-Projeto piloto para criação de market place com operação de compra por cartão de crédito. 
+# E-Commerce Braspag
+
+Projeto piloto para demonstração de consumo de API da [Braspag] com operação de compra por cartão de crédito. 
 
 ## A fazer:
 
