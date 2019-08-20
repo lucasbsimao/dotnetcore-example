@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.org/lucasbsimao/purchaseapp.svg?branch=master)](https://travis-ci.org/lucasbsimao/purchaseapp)
 
-# E-Commerce Braspag
+# Piloto E-commerce
 
-Projeto piloto para demonstração de consumo de API da Braspag com operação de compra por cartão de crédito. 
+Projeto de exemplo para aprendizado de .Net Core com operação de compra por cartão de crédito. 
 
 ## A fazer:
 
